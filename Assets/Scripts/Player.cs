@@ -5,24 +5,21 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _speed = 7f;
-    private float _canShoot = -1f;
-    private bool _isContainerOn = false;
 
     [Header("External Components")] 
     [SerializeField] private GameObject _cookiePrefab;
     [SerializeField] private SpawnManager _spawnManager;
     [SerializeField] private GameObject _trashcanPrefab;
     [SerializeField] private UIManager _uiManager;
-    [SerializeField] private GameObject _containerPowerUpPrefab;
 
     [Header("Player Settings")]
     [SerializeField] private int _lives = 4;
     [SerializeField] private float _shootingRate = 0.3f;
+    private float _canShoot = -1f;
 
     void Start()
     {
         transform.position = new Vector3(0f, 0.5f, 0f);
-        _isContainerOn = false;
     }
     
     void Update()
@@ -68,12 +65,6 @@ public class Player : MonoBehaviour
             _canShoot = Time.time + _shootingRate;
             Instantiate(_trashcanPrefab, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
         }
-
-        if (_isContainerOn)
-        {
-            Instantiate(_containerPowerUpPrefab, new Vector3(10.53f, -2f, 0f), Quaternion.identity);
-            _isContainerOn = false;
-        }
     }
 
     public void Damage()
@@ -101,13 +92,5 @@ public class Player : MonoBehaviour
     public void RelayScore(int score)
     {
         _uiManager.AddScore(score);
-    }
-
-    public void ActivatePowerUp(GameObject powerUp)
-    {
-        if (powerUp.name.Contains("Container"))
-        {
-            _isContainerOn = true;
-        }
     }
 }
