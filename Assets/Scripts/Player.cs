@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed = 7f;
     private float _canShoot = -1f;
     private bool _isContainerOn = false;
+    private bool _instantiateUmbrella = false;
+    private bool _isUmbrellaOn = false;
 
     [Header("External Components")] 
     [SerializeField] private GameObject _cookiePrefab;
@@ -14,6 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _trashcanPrefab;
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private GameObject _containerPowerUpPrefab;
+    [SerializeField] private GameObject _umbrellaPowerUpPrefab;
+    [SerializeField] private float _powerUpTimeout = 5f;
 
     [Header("Player Settings")]
     [SerializeField] private int _lives = 4;
@@ -23,6 +27,8 @@ public class Player : MonoBehaviour
     {
         transform.position = new Vector3(0f, 0.5f, 0f);
         _isContainerOn = false;
+        _instantiateUmbrella = false;
+        _isUmbrellaOn = false;
     }
     
     void Update()
@@ -74,12 +80,28 @@ public class Player : MonoBehaviour
             Instantiate(_containerPowerUpPrefab, new Vector3(10.53f, -2f, 0f), Quaternion.identity);
             _isContainerOn = false;
         }
+
+        if (_instantiateUmbrella)
+        {
+            Instantiate(_umbrellaPowerUpPrefab, transform.position + new Vector3(0f, 0.1f, 0f), Quaternion.identity, this.gameObject.transform);
+            _instantiateUmbrella = false;
+        }
     }
 
     public void Damage()
     {
-        _lives -= 1;
+        // if umbrella is activated it gets now deactivated but player does not lose lives
+        if (_isUmbrellaOn)
+        {
+            _isUmbrellaOn = false;
+        }
+        // else player gets damaged and loses 1 life
+        else
+        {
+            _lives -= 1;
+        }
 
+        // if no lives are left spawning is turned off and remaining objects are destroyed
         if (_lives == 0)
         {
             if (_spawnManager != null)
@@ -109,5 +131,20 @@ public class Player : MonoBehaviour
         {
             _isContainerOn = true;
         }
+
+        if (powerUp.name.Contains("Umbrella"))
+        {
+            _instantiateUmbrella = true;
+            _isUmbrellaOn = true;
+        }
+
+        StartCoroutine(DeactivatePowerUp());
+    }
+
+    IEnumerator DeactivatePowerUp()
+    {
+        yield return new WaitForSeconds(_powerUpTimeout);
+        _isUmbrellaOn = false;
     }
 }
+

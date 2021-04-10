@@ -34,11 +34,16 @@ public class Cookie : MonoBehaviour
         // if cookie collides with player add 5 to score and destroy cookie
         if (other.CompareTag("Player"))
         {
-            Player player = other.GetComponent<Player>();
-            if (player != null)
+            // make sure that the collision with player gets only counted once
+            // when umbrella is active
+            if (!other.name.Contains("Umbrella"))
             {
-                player.RelayScore(5);
-                Destroy(this.gameObject);
+                Player player = other.GetComponent<Player>();
+                if (player != null)
+                {
+                    player.RelayScore(5);
+                    Destroy(this.gameObject);
+                }
             }
         }
         // if cookie collides with "normal" trashcan subtract 1 from the score and destroy cookie

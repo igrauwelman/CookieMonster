@@ -28,11 +28,12 @@ public class Trash : MonoBehaviour
         // if trash collides with trashcan it gets destroyed
         if (other.CompareTag("Trashcan"))
         {
-            // "normal" trashcan gets destroyed, container powerUp does not
+            // "normal" trashcan gets destroyed, container does not
             if (other.name.Contains("Trashcan"))
             {
                 Destroy(other.gameObject);
             }
+            Debug.Log("trash should be destroyed");
             Destroy(this.gameObject);
             // add 3 points for can1 and garlic
             if (this.name.Contains("Can1") || this.name.Contains("Garlic"))
@@ -50,17 +51,29 @@ public class Trash : MonoBehaviour
                 GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
             }
         }
-        // if trash collides with player they get damaged and trash gets destroyed
-        // (monster "ate" it)
         else if (other.CompareTag("Player"))
         {
-            Player player = other.GetComponent<Player>();
-
-            if (player != null)
+            // TODO: rename once monster is added
+            // if trash collides with player they get damaged and trash gets destroyed
+            if (other.name.Contains("Player"))
             {
-                player.Damage();
+                Player player = other.GetComponent<Player>();
+
+                if (player != null)
+                {
+                    player.Damage();
+                    Destroy(this.gameObject);
+                }
+            }
+            // if trash collides with umbrella umbrella and trash get destroyed, player does
+            // not get damages
+            else if (other.name.Contains("Umbrella"))
+            {
+                GameObject.FindWithTag("Player").GetComponent<Player>().Damage(); 
+                Destroy(other.gameObject);
                 Destroy(this.gameObject);
             }
+
         }
     }
 }
