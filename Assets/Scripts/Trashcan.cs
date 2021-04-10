@@ -11,19 +11,10 @@ public class Trashcan : MonoBehaviour
     
     void Update()
     {
-        // "normal" trashcan
-        if (name.Contains("Trashcan"))
-        { 
-            // let it move upwards
-            transform.Translate(Vector3.up * (Time.deltaTime * _speed));
-            // let it rotate a bit 
-            transform.Rotate(new Vector3(0f, Random.Range(-45f,45f), 0f) * (Time.deltaTime * _speed * 2f), Space.Self);
-        }
-        // container powerUp
-        else
-        {
-            transform.Translate(Vector3.up * (Time.deltaTime * _speed * 2f));
-        }
+        // let it move upwards
+        transform.Translate(Vector3.up * (Time.deltaTime * _speed));
+        // let it rotate a bit
+        transform.Rotate(new Vector3(0f, Random.Range(-45f,45f), 0f) * (Time.deltaTime * _speed * 2f), Space.Self);
         
         // destroy if out of screen
         if (transform.position.y > 10f)
