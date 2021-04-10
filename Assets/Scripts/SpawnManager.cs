@@ -1,0 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpawnManager : MonoBehaviour
+{
+    [SerializeField] private GameObject _cookiePrefab;
+    [SerializeField] private List<GameObject> _trashPrefabs;
+    [SerializeField] private float _delay = 3f;
+    private bool _spawningOn = true;
+    void Start()
+    {
+        StartCoroutine(SpawnSystem());
+    }
+    
+    public void ONPlayerDeath()
+    {
+        _spawningOn = false;
+    }
+
+    IEnumerator SpawnSystem()
+    {
+        while (_spawningOn)
+        {
+            Instantiate(_cookiePrefab, new Vector3(Random.Range(-8.3f, 8.3f), y: 10f, z: 0f),
+                Quaternion.identity, this.transform);
+
+            Instantiate(_trashPrefabs[(int) Random.Range(0f, _trashPrefabs.Count)], new Vector3(Random.Range(-8.3f, 8.3f), y: 10f, z: 0f), Quaternion.identity, this.transform);
+
+            yield return new WaitForSeconds(_delay);
+        }
+    }
+}
