@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/projectSettingsUpdater.xml
+/.idea.CookieMonster.iml
+/modules.xml
+/contentModel.xml
+# Datasource local storage ignored files
+/../../../../../../../../../../../../../../../:\Users\maral\OneDrive\Dokumente\UNI\Module\5thSemester\IntroToUnity\Projects\CookieMonster\CookieMonster\.idea\.idea.CookieMonster\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
