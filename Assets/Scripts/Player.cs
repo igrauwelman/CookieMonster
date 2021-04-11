@@ -13,14 +13,14 @@ public class Player : MonoBehaviour
     [Header("External Components")] 
     [SerializeField] private GameObject _cookiePrefab;
     [SerializeField] private SpawnManager _spawnManager;
-    [SerializeField] private GameObject _trashcanPrefab;
     [SerializeField] private UIManager _uiManager;
+    [SerializeField] private GameObject _trashcanPrefab;
     [SerializeField] private GameObject _containerPowerUpPrefab;
     [SerializeField] private GameObject _umbrellaPowerUpPrefab;
     [SerializeField] private float _powerUpTimeout = 5f;
 
     [Header("Player Settings")]
-    [SerializeField] private int _lives = 4;
+    [Range(1f,5f)] [SerializeField] public int _lives = 4;
     [SerializeField] private float _shootingRate = 0.3f;
 
     void Start()
@@ -123,6 +123,11 @@ public class Player : MonoBehaviour
     public void RelayScore(int score)
     {
         _uiManager.AddScore(score);
+    }
+
+    public void RelayLife(int life)
+    {
+        _uiManager.UpdateLife(life);
     }
 
     public void ActivatePowerUp(GameObject powerUp)

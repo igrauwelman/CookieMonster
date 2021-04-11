@@ -65,11 +65,12 @@ public class Trash : MonoBehaviour
                 if (player != null)
                 {
                     player.Damage();
+                    player.RelayLife(1);
                     Destroy(this.gameObject);
                 }
             }
-            // if trash collides with umbrella umbrella and trash get destroyed, player does
-            // not get damages
+            // if trash collides with umbrella, umbrella and trash get destroyed but player does
+            // not get damaged
             else if (other.name.Contains("Umbrella"))
             {
                 GameObject.FindWithTag("Player").GetComponent<Player>().Damage(); 
