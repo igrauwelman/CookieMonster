@@ -5,40 +5,30 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _speed = 7f;
-<<<<<<< HEAD
-=======
     private float _canShoot = -1f;
     private bool _isContainerOn = false;
     private bool _instantiateUmbrella = false;
     private bool _isUmbrellaOn = false;
->>>>>>> isabel
 
     [Header("External Components")] 
     [SerializeField] private GameObject _cookiePrefab;
     [SerializeField] private SpawnManager _spawnManager;
     [SerializeField] private GameObject _trashcanPrefab;
     [SerializeField] private UIManager _uiManager;
-<<<<<<< HEAD
-=======
     [SerializeField] private GameObject _containerPowerUpPrefab;
     [SerializeField] private GameObject _umbrellaPowerUpPrefab;
     [SerializeField] private float _powerUpTimeout = 5f;
->>>>>>> isabel
 
     [Header("Player Settings")]
     [SerializeField] private int _lives = 4;
     [SerializeField] private float _shootingRate = 0.3f;
-    private float _canShoot = -1f;
 
     void Start()
     {
         transform.position = new Vector3(0f, 0.5f, 0f);
-<<<<<<< HEAD
-=======
         _isContainerOn = false;
         _instantiateUmbrella = false;
         _isUmbrellaOn = false;
->>>>>>> isabel
     }
     
     void Update()
@@ -84,8 +74,6 @@ public class Player : MonoBehaviour
             _canShoot = Time.time + _shootingRate;
             Instantiate(_trashcanPrefab, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
         }
-<<<<<<< HEAD
-=======
 
         if (_isContainerOn)
         {
@@ -98,7 +86,6 @@ public class Player : MonoBehaviour
             Instantiate(_umbrellaPowerUpPrefab, transform.position + new Vector3(0f, 0.1f, 0f), Quaternion.identity, this.gameObject.transform);
             _instantiateUmbrella = false;
         }
->>>>>>> isabel
     }
 
     public void Damage()
@@ -137,8 +124,6 @@ public class Player : MonoBehaviour
     {
         _uiManager.AddScore(score);
     }
-<<<<<<< HEAD
-=======
 
     public void ActivatePowerUp(GameObject powerUp)
     {
@@ -161,6 +146,5 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(_powerUpTimeout);
         _isUmbrellaOn = false;
     }
->>>>>>> isabel
 }
 
