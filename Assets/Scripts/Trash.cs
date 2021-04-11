@@ -28,12 +28,19 @@ public class Trash : MonoBehaviour
         // if trash collides with trashcan it gets destroyed
         if (other.CompareTag("Trashcan"))
         {
+<<<<<<< HEAD
             // "normal" trashcan gets destroyed, container does not
+=======
+            // "normal" trashcan gets destroyed, container powerUp does not
+>>>>>>> d648b75 (added ContainerCollectable and PowerUp Behaviour)
             if (other.name.Contains("Trashcan"))
             {
                 Destroy(other.gameObject);
             }
+<<<<<<< HEAD
             Debug.Log("trash should be destroyed");
+=======
+>>>>>>> d648b75 (added ContainerCollectable and PowerUp Behaviour)
             Destroy(this.gameObject);
             Destroy(other.gameObject);
             // add 3 points for can1 and garlic
