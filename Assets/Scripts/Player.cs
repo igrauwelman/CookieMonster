@@ -112,7 +112,8 @@ public class Player : MonoBehaviour
             {
                 Debug.LogError("SpawnManager not assigned!");
             }
-            Destroy(this.gameObject);
+            _uiManager.GameOver();
+            //Destroy(this.gameObject);
             foreach (Transform child in _spawnManager.transform)
             {
                 Destroy(child.gameObject);
