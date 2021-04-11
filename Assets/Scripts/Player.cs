@@ -7,11 +7,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed = 7f;
     private float _canShoot = -1f;
     private bool _isContainerOn = false;
-<<<<<<< HEAD
     private bool _instantiateUmbrella = false;
     private bool _isUmbrellaOn = false;
-=======
->>>>>>> d648b75 (added ContainerCollectable and PowerUp Behaviour)
 
     [Header("External Components")] 
     [SerializeField] private GameObject _cookiePrefab;
@@ -19,11 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _trashcanPrefab;
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private GameObject _containerPowerUpPrefab;
-<<<<<<< HEAD
     [SerializeField] private GameObject _umbrellaPowerUpPrefab;
     [SerializeField] private float _powerUpTimeout = 5f;
-=======
->>>>>>> d648b75 (added ContainerCollectable and PowerUp Behaviour)
 
     [Header("Player Settings")]
     [SerializeField] private int _lives = 4;
@@ -33,11 +27,8 @@ public class Player : MonoBehaviour
     {
         transform.position = new Vector3(0f, 0.5f, 0f);
         _isContainerOn = false;
-<<<<<<< HEAD
         _instantiateUmbrella = false;
         _isUmbrellaOn = false;
-=======
->>>>>>> d648b75 (added ContainerCollectable and PowerUp Behaviour)
     }
     
     void Update()
@@ -89,15 +80,12 @@ public class Player : MonoBehaviour
             Instantiate(_containerPowerUpPrefab, new Vector3(10.53f, -2f, 0f), Quaternion.identity);
             _isContainerOn = false;
         }
-<<<<<<< HEAD
 
         if (_instantiateUmbrella)
         {
             Instantiate(_umbrellaPowerUpPrefab, transform.position + new Vector3(0f, 0.1f, 0f), Quaternion.identity, this.gameObject.transform);
             _instantiateUmbrella = false;
         }
-=======
->>>>>>> d648b75 (added ContainerCollectable and PowerUp Behaviour)
     }
 
     public void Damage()
@@ -143,7 +131,6 @@ public class Player : MonoBehaviour
         {
             _isContainerOn = true;
         }
-<<<<<<< HEAD
 
         if (powerUp.name.Contains("Umbrella"))
         {
@@ -158,8 +145,6 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(_powerUpTimeout);
         _isUmbrellaOn = false;
-=======
->>>>>>> d648b75 (added ContainerCollectable and PowerUp Behaviour)
     }
 }
 

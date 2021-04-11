@@ -35,7 +35,7 @@ public class Cookie : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // make sure that the collision with player gets only counted once
-            // when umbrella is active
+            // if umbrella is active
             if (!other.name.Contains("Umbrella"))
             {
                 Player player = other.GetComponent<Player>();
