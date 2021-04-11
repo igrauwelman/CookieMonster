@@ -10,9 +10,11 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float _delay = 3f;
     [SerializeField] private float _collectableSpawnRate = 15f;
     private bool _spawningOn = true;
+    
     void Start()
     {
         StartCoroutine(SpawnSystem());
+        StartCoroutine(SpawnCollectables());
     }
     
     public void ONPlayerDeath()
