@@ -30,4 +30,18 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(_delay);
         }
     }
+<<<<<<< HEAD
+=======
+
+    IEnumerator SpawnCollectables()
+    {
+        while (_spawningOn)
+        {
+            Instantiate(_collectablePrefabs[(int) Random.Range(0f, _collectablePrefabs.Count)],
+                new Vector3(Random.Range(-9f, 9f), 6.5f, 0f), Quaternion.identity, this.transform);
+            
+            yield return new WaitForSeconds(_collectableSpawnRate);
+        }
+    }
+>>>>>>> 7e9b3b9 (added PowerUp Behaviour)
 }
