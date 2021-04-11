@@ -34,8 +34,8 @@ public class Trash : MonoBehaviour
                 Destroy(other.gameObject);
             }
             
-            Destroy(this.gameObject);
-            
+            Destroy(this.gameObject);            
+
             // add 3 points for can1 and garlic
             if (this.name.Contains("Can1") || this.name.Contains("Garlic"))
             {

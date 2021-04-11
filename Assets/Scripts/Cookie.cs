@@ -46,9 +46,9 @@ public class Cookie : MonoBehaviour
                 }
             }
         }
-        // if cookie collides with "normal" trashcan subtract 1 from the score and destroy cookie
-        else if (other.name.Contains("Trashcan"))
-        { 
+        // if cookie collides with trashcan subtract 1 from the score and destroy cookie
+        else if (other.CompareTag("Trashcan"))
+        {
             GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(-1);
             Destroy(this.gameObject);
             Destroy(other.gameObject);
