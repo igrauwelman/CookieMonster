@@ -11,10 +11,6 @@ public class Trashcan : MonoBehaviour
     
     void Update()
     {
-        // let it move upwards
-        transform.Translate(Vector3.up * (Time.deltaTime * _speed));
-        // let it rotate a bit
-        transform.Rotate(new Vector3(0f, Random.Range(-45f,45f), 0f) * (Time.deltaTime * _speed * 2f), Space.Self);
         // "normal" trashcan
             if (name.Contains("Trashcan"))
             { 
