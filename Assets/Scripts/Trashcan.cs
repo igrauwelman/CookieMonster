@@ -16,6 +16,7 @@ public class Trashcan : MonoBehaviour
         // let it rotate a bit
         transform.Rotate(new Vector3(0f, Random.Range(-45f,45f), 0f) * (Time.deltaTime * _speed * 2f), Space.Self);
         // "normal" trashcan
+<<<<<<< HEAD
             if (name.Contains("Trashcan"))
             { 
                 // let it move upwards
@@ -28,6 +29,20 @@ public class Trashcan : MonoBehaviour
             {
                 transform.Translate(Vector3.up * (Time.deltaTime * _speed * 2f));
             }
+=======
+        if (name.Contains("Trashcan"))
+        { 
+            // let it move upwards
+            transform.Translate(Vector3.up * (Time.deltaTime * _speed));
+            // let it rotate a bit 
+            transform.Rotate(new Vector3(0f, Random.Range(-45f,45f), 0f) * (Time.deltaTime * _speed * 2f), Space.Self);
+        }
+        // container powerUp
+        else
+        {
+            transform.Translate(Vector3.up * (Time.deltaTime * _speed * 2f));
+        }
+>>>>>>> d648b75 (added ContainerCollectable and PowerUp Behaviour)
         
             // destroy if out of screen
             if (transform.position.y > 10f)
