@@ -35,11 +35,7 @@ public class Trash : MonoBehaviour
             }
             
             Destroy(this.gameObject);
-<<<<<<< HEAD
-            Destroy(other.gameObject);
-=======
             
->>>>>>> 7e9b3b9 (added PowerUp Behaviour)
             // add 3 points for can1 and garlic
             if (this.name.Contains("Can1") || this.name.Contains("Garlic"))
             {

@@ -6,7 +6,9 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject _cookiePrefab;
     [SerializeField] private List<GameObject> _trashPrefabs;
+    [SerializeField] private List<GameObject> _collectablePrefabs;
     [SerializeField] private float _delay = 3f;
+    [SerializeField] private float _collectableSpawnRate = 15f;
     private bool _spawningOn = true;
     void Start()
     {
@@ -30,8 +32,6 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(_delay);
         }
     }
-<<<<<<< HEAD
-=======
 
     IEnumerator SpawnCollectables()
     {
@@ -43,5 +43,4 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(_collectableSpawnRate);
         }
     }
->>>>>>> 7e9b3b9 (added PowerUp Behaviour)
 }
