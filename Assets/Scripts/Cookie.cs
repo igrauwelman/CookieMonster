@@ -11,6 +11,7 @@ public class Cookie : MonoBehaviour
 
     void Start()
     {
+        // let it rotate
         transform.eulerAngles = new Vector3(0f, -90f, -90f);
     }
     void Update()
@@ -21,11 +22,9 @@ public class Cookie : MonoBehaviour
         transform.Rotate(new Vector3(0f, 360f, 0f) * (Time.deltaTime * _rotationSpeed));
 
         // if cookie leaves the screen before being collected, it gets destroyed
-        // OR: respawn at the top
         if (transform.position.y < -1.6)
         {
            Destroy(this.gameObject);
-            //.position = new Vector3(Random.Range(-9f, 9f), y: 10f, z: 0f);
         }
     }
 

@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private bool _isContainerOn = false;
     private bool _instantiateUmbrella = false;
     private bool _isUmbrellaOn = false;
-    public bool _isMonsterOn = false;
+    public bool _isCookieOn = false;
 
     [Header("External Components")] 
     [SerializeField] private GameObject _cookiePrefab;
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         _isContainerOn = false;
         _instantiateUmbrella = false;
         _isUmbrellaOn = false; 
-        _isMonsterOn = false;
+        _isCookieOn = false;
     }
     
     void Update()
@@ -71,18 +71,21 @@ public class Player : MonoBehaviour
 
     void Shoot()
     {
-        if (!_isMonsterOn && Input.GetKeyDown(KeyCode.Space) && Time.time > _canShoot)
+        // player can shoot with space bar if he can shoot timewise and cookie power up is inactive
+        if (!_isCookieOn && Input.GetKeyDown(KeyCode.Space) && Time.time > _canShoot)
         {
             _canShoot = Time.time + _shootingRate;
             Instantiate(_trashcanPrefab, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
         }
 
+        // if player collected container collectable its power up is instantiated
         if (_isContainerOn)
         {
             Instantiate(_containerPowerUpPrefab, new Vector3(10.53f, -2f, 0f), Quaternion.identity);
             _isContainerOn = false;
         }
 
+        // if player collected umbrella collectable its power up is instantiated
         if (_instantiateUmbrella)
         {
             Instantiate(_umbrellaPowerUpPrefab, transform.position + new Vector3(0f, 0.1f, 0f), Quaternion.identity, this.gameObject.transform);
@@ -92,7 +95,7 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
-        // if umbrella is activated it gets now deactivated but player does not lose lives
+        // if umbrella is activated it gets deactivated but player does not lose lives
         if (_isUmbrellaOn)
         {
             _isUmbrellaOn = false;
@@ -148,13 +151,15 @@ public class Player : MonoBehaviour
 
         if (powerUp.name.Contains("Monster"))
         {
+            // clear screen
             foreach (Transform child in _spawnManager.transform)
             {
                 Destroy(child.gameObject);
             }
 
-            _isMonsterOn = true;
-            _spawnManager._isMonsterOn = true;
+            _isCookieOn = true;
+            _spawnManager.isCookieOn = true;
+            // make cookie monster faster
             _speed *= 2f;
         }
 
@@ -164,10 +169,16 @@ public class Player : MonoBehaviour
     IEnumerator DeactivatePowerUp()
     {
         yield return new WaitForSeconds(_powerUpTimeout);
+        
+        if (_isCookieOn)
+        {
+            // back to its original speed
+            _speed *= 0.5f;
+        }
+        _isCookieOn = false;
         _isUmbrellaOn = false;
-        _isMonsterOn = false;
-        _spawnManager._isMonsterOn = false;
-        _speed *= 0.5f;
+        _spawnManager.isCookieOn = false;
+       
     }
 }
 
