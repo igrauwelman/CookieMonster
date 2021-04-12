@@ -8,18 +8,27 @@ public class Trash : MonoBehaviour
 {
     [SerializeField] private float _speed = 4f;
     [SerializeField] private float _rotationSpeed = 1f;
-
+    [SerializeField] private float _horizontalSpeed = 5f;
+    private int _respawningAmount = 0;
+    
     void Update()
     {
         // let it move downwards
         transform.Translate(Vector3.down * (Time.deltaTime * _speed));
         // let it rotate
         transform.Rotate(new Vector3(0f, 360f, 0f) * (Time.deltaTime * _rotationSpeed));
-        
+
         // respawn if out of screen
         if (transform.position.y < -1.6f)
         {
             transform.position = new Vector3(Random.Range(-9f, 9f), y:10f, z: 0f);
+            _respawningAmount += 1;
+        }
+
+        // if object got respawned more than 2 times it gets more difficult to destroy it as it "wiggles" around
+        if (_respawningAmount >= 3)
+        {
+            transform.Translate(Vector3.right * (Random.Range(-1f,1f) * _horizontalSpeed * Time.deltaTime), Space.World);
         }
     }
 
