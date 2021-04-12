@@ -42,6 +42,14 @@ public class Trash : MonoBehaviour
             {
                 Destroy(other.gameObject);
             }
+            // if trash collides with umbrella, umbrella and trash get destroyed but player does
+            // not get damaged
+            else if (other.name.Contains("Umbrella"))
+            {
+                GameObject.FindWithTag("Player").GetComponent<Player>().Damage(); 
+                Destroy(other.gameObject);
+                Destroy(this.gameObject);
+            }
             
             Destroy(this.gameObject);
             
@@ -76,14 +84,6 @@ public class Trash : MonoBehaviour
                     player.RelayLife(1);
                     Destroy(this.gameObject);
                 }
-            }
-            // if trash collides with umbrella, umbrella and trash get destroyed but player does
-            // not get damaged
-            else if (other.name.Contains("Umbrella"))
-            {
-                GameObject.FindWithTag("Player").GetComponent<Player>().Damage(); 
-                Destroy(other.gameObject);
-                Destroy(this.gameObject);
             }
 
         }
