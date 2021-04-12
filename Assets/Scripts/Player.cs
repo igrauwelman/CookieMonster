@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
             _isUmbrellaOn = true;
         }
 
-        if (powerUp.name.Contains("Monster"))
+        if (powerUp.name.Contains("Cookie"))
         {
             // clear screen
             foreach (Transform child in _spawnManager.transform)
