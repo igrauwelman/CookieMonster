@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private bool _isContainerOn = false;
     private bool _instantiateUmbrella = false;
     private bool _isUmbrellaOn = false;
+    public bool _isMonsterOn = false;
 
     [Header("External Components")] 
     [SerializeField] private GameObject _cookiePrefab;
@@ -28,7 +29,8 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(0f, 0.5f, 0f);
         _isContainerOn = false;
         _instantiateUmbrella = false;
-        _isUmbrellaOn = false;
+        _isUmbrellaOn = false; 
+        _isMonsterOn = false;
     }
     
     void Update()
@@ -69,7 +71,7 @@ public class Player : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canShoot)
+        if (!_isMonsterOn && Input.GetKeyDown(KeyCode.Space) && Time.time > _canShoot)
         {
             _canShoot = Time.time + _shootingRate;
             Instantiate(_trashcanPrefab, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
@@ -144,6 +146,18 @@ public class Player : MonoBehaviour
             _isUmbrellaOn = true;
         }
 
+        if (powerUp.name.Contains("Monster"))
+        {
+            foreach (Transform child in _spawnManager.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            _isMonsterOn = true;
+            _spawnManager._isMonsterOn = true;
+            _speed *= 2f;
+        }
+
         StartCoroutine(DeactivatePowerUp());
     }
 
@@ -151,6 +165,9 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(_powerUpTimeout);
         _isUmbrellaOn = false;
+        _isMonsterOn = false;
+        _spawnManager._isMonsterOn = false;
+        _speed *= 0.5f;
     }
 }
 

@@ -24,8 +24,8 @@ public class Cookie : MonoBehaviour
         // OR: respawn at the top
         if (transform.position.y < -1.6)
         {
-           // Destroy(this.gameObject);
-            transform.position = new Vector3(Random.Range(-9f, 9f), y: 10f, z: 0f);
+           Destroy(this.gameObject);
+            //.position = new Vector3(Random.Range(-9f, 9f), y: 10f, z: 0f);
         }
     }
 
