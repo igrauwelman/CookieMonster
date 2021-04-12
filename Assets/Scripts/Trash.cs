@@ -56,7 +56,6 @@ public class Trash : MonoBehaviour
         }
         else if (other.CompareTag("Player"))
         {
-            // TODO: rename once monster is added
             // if trash collides with player they get damaged and trash gets destroyed
             if (other.name.Contains("Player"))
             {

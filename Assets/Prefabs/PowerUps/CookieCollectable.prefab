@@ -1,19 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2320218289198056108
+--- !u!114 &2686923197438418509
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064851986820069415}
+  m_GameObject: {fileID: 4344046104353768642}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebaeef4bb62ff2942822809879d537ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
---- !u!1001 &4479575602298208267
+--- !u!1001 &2216988577260879086
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2489775601659328556, guid: d3f0ca5e84928c344a1f3c2e9606c4fa, type: 3}
       propertyPath: m_Name
-      value: MonsterCollectable
+      value: CookieCollectable
       objectReference: {fileID: 0}
     - target: {fileID: 2489775601659328556, guid: d3f0ca5e84928c344a1f3c2e9606c4fa, type: 3}
       propertyPath: m_TagString
@@ -79,8 +79,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7498970403845707744, guid: d3f0ca5e84928c344a1f3c2e9606c4fa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d3f0ca5e84928c344a1f3c2e9606c4fa, type: 3}
---- !u!1 &2064851986820069415 stripped
+--- !u!1 &4344046104353768642 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2489775601659328556, guid: d3f0ca5e84928c344a1f3c2e9606c4fa, type: 3}
-  m_PrefabInstance: {fileID: 4479575602298208267}
+  m_PrefabInstance: {fileID: 2216988577260879086}
   m_PrefabAsset: {fileID: 0}

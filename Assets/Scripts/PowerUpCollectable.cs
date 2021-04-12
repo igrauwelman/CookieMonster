@@ -9,7 +9,8 @@ public class PowerUpCollectable : MonoBehaviour
 
     void Start()
     {
-        if (this.gameObject.name.Contains("Monster"))
+        // if collectable is cookie collectable let it rotate like the normal cookies
+        if (this.gameObject.name.Contains("Cookie"))
         {
             transform.eulerAngles = new Vector3(0f, -90f, -90f);
         }
@@ -28,6 +29,7 @@ public class PowerUpCollectable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // if collectable collides with player activate the respective power up and destroy collectable
         if (other.CompareTag("Player"))
         {
             Player player = other.GetComponent<Player>();
